@@ -1,0 +1,164 @@
+/* --- Place this inside your <style> tag or styles.css file --- */
+:root {
+    --bg-main: #0a192f;
+    --bg-card: #172a45;
+    --bg-input: #020c1b;
+    --text-main: #64ffda;
+    --text-muted: #8892b0;
+    --text-white: #e6f1ff;
+    --accent-blue: #3066be;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.pokedex-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--accent-blue);
+    padding-bottom: 20px;
+}
+
+h1 {
+    color: var(--text-main);
+    font-size: 2.5rem;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.search-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+input, select, button {
+    background-color: var(--bg-input);
+    border: 1px solid var(--text-main);
+    color: var(--text-white);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 8px var(--text-main);
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--accent-blue);
+    border: none;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: var(--text-main);
+    color: var(--bg-main);
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-card);
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--accent-blue);
+}
+
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.poke-card {
+    background-color: var(--bg-card);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid transparent;
+}
+
+.poke-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--text-main);
+    box-shadow: 0 8px 25px rgba(100, 255, 218, 0.15);
+}
+
+.img-container {
+    background-color: var(--bg-main);
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.poke-img {
+    max-width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+}
+
+.poke-id {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.poke-name {
+    color: var(--text-white);
+    font-size: 1.4rem;
+    margin: 5px 0 10px 0;
+    text-transform: capitalize;
+}
+
+.types-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.type-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--accent-blue);
+}
+
+.form-selector {
+    width: 100%;
+    margin-top: 10px;
+    background-color: var(--bg-main);
+}
+
+.loading-msg {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: var(--text-main);
+    font-size: 1.2rem;
+}
