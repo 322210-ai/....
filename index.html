@@ -3,302 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Blue Pokédex</title>
+    <title>Pokédex Forms</title>
     <style>
-        :root {
-            --primary-blue: #0A2540;
-            --electric-blue: #00D4FF;
-            --soft-blue: #E6F0FA;
-            --card-bg: #FFFFFF;
-            --text-dark: #2C3E50;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary-blue), #002244);
-            color: var(--soft-blue);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--electric-blue);
-            padding-bottom: 20px;
-        }
-
-        header h1 {
-            color: var(--electric-blue);
-            font-size: 2.5rem;
-            margin: 0;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-        }
-
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        #pokemon-search {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px 20px;
-            font-size: 1rem;
-            border: 2px solid var(--electric-blue);
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            outline: none;
-        }
-
-        #pokemon-search::placeholder {
-            color: #a0c0e0;
-        }
-
-        .pokedex-layout {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .pokedex-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .display-card {
-            background: var(--card-bg);
-            color: var(--text-dark);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            text-align: center;
-            position: sticky;
-            top: 20px;
-            border: 3px solid var(--electric-blue);
-        }
-
-        .sprite-container {
-            background: radial-gradient(circle, #eef7ff 0%, #bce3ff 100%);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sprite-container img {
-            width: 180px;
-            height: 180px;
-            object-fit: contain;
-        }
-
-        .poke-id {
-            font-weight: bold;
-            color: #7f8c8d;
-        }
-
-        .poke-name {
-            font-size: 2rem;
-            margin: 5px 0;
-            text-transform: capitalize;
-            color: var(--primary-blue);
-        }
-
-        .form-selectors {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            background: var(--soft-blue);
-            border: 1px solid #bce3ff;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--primary-blue);
-            transition: all 0.2s;
-            text-transform: capitalize;
-        }
-
-        .btn:hover:not(:disabled) {
-            background: var(--electric-blue);
-            color: var(--primary-blue);
-        }
-
-        .btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .btn.active {
-            background: var(--primary-blue);
-            color: #fff;
-            border-color: var(--primary-blue);
-        }
-
-        .list-panel {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 20px;
-            max-height: 75vh;
-            overflow-y: auto;
-            border: 1px solid rgba(0, 214, 255, 0.2);
-        }
-
-        .poke-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 12px;
-        }
-
-        .grid-item {
-            background: rgba(10, 37, 64, 0.6);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .grid-item:hover {
-            transform: translateY(-3px);
-            border-color: var(--electric-blue);
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        .grid-item img {
-            width: 70px;
-            height: 70px;
-        }
-
-        .grid-item p {
-            margin: 5px 0 0 0;
-            font-size: 0.85rem;
-            text-transform: capitalize;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+        body { background: #0A192F; color: #E6F1FF; font-family: sans-serif; text-align: center; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; max-width: 1000px; margin: 20px auto; }
+        .card { background: #172A45; padding: 15px; border-radius: 10px; border: 1px solid #3066BE; }
+        .card:hover { border-color: #64FFDA; }
+        img { height: 120px; object-fit: contain; background: #020C1B; border-radius: 8px; padding: 5px; }
+        input, select { background: #020C1B; color: #E6F1FF; border: 1px solid #64FFDA; padding: 8px; border-radius: 5px; margin: 5px; font-size: 1rem; }
+        .name { text-transform: capitalize; font-weight: bold; margin: 10px 0; color: #64FFDA; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>🔵 ADVANCED DEX 🔵</h1>
-    </header>
+    <h1>Form Master Pokédex</h1>
+    <input type="text" id="search" placeholder="Search Pokémon...">
+    <label><input type="checkbox" id="shiny"> ✨ Shiny</label>
 
-    <div class="search-container">
-        <input type="text" id="pokemon-search" placeholder="Search Pokémon by name or ID...">
-    </div>
-
-    <div class="pokedex-layout">
-        <!-- Main Display Panel -->
-        <div class="display-card">
-            <div class="sprite-container">
-                <img id="main-sprite" src="https://githubusercontent.com" alt="Pokemon Sprite">
-            </div>
-            <span class="poke-id" id="main-id">#0077</span>
-            <h2 class="poke-name" id="main-name">Ponyta</h2>
-            
-            <h3>Forms & Variants</h3>
-            <div class="form-selectors" id="form-buttons">
-                <!-- Buttons will dynamically generate here -->
-            </div>
-        </div>
-
-        <!-- Sidebar Selection List -->
-        <div class="list-panel">
-            <div class="poke-grid" id="pokemon-list">
-                <!-- Grid items generated by JavaScript -->
-            </div>
-        </div>
-    </div>
-</div>
+    <div class="grid" id="dex"></div>
 
 <script>
-    // Database mapping out different Pokemon sprite variants from PokeAPI
-    const pokemonDatabase = [
-        { id: 1, name: "bulbasaur", hasShiny: true, variants: { kanto: "1", gmax: "1-gmax" } },
-        { id: 3, name: "venusaur", hasShiny: true, variants: { kanto: "3", mega: "3-mega", gmax: "3-gmax" } },
-        { id: 6, name: "charizard", hasShiny: true, variants: { kanto: "6", "mega x": "6-mega-x", "mega y": "6-mega-y", gmax: "6-gmax" } },
-        { id: 9, name: "blastoise", hasShiny: true, variants: { kanto: "9", mega: "9-mega", gmax: "9-gmax" } },
-        { id: 25, name: "pikachu", hasShiny: true, variants: { kanto: "25", gmax: "25-gmax" } },
-        { id: 52, name: "meowth", hasShiny: true, variants: { kanto: "52", alola: "52-alola", galar: "52-galar", gmax: "52-gmax" } },
-        { id: 77, name: "ponyta", hasShiny: true, variants: { kanto: "77", galar: "10162" } },
-        { id: 78, name: "rapidash", hasShiny: true, variants: { kanto: "78", galar: "10163" } },
-        { id: 94, name: "gengar", hasShiny: true, variants: { kanto: "94", mega: "94-mega", gmax: "94-gmax" } },
-        { id: 130, name: "gyarados", hasShiny: true, variants: { kanto: "130", mega: "130-mega" } },
-        { id: 133, name: "eevee", hasShiny: true, variants: { kanto: "133", gmax: "133-gmax" } },
-        { id: 150, name: "mewtwo", hasShiny: true, variants: { kanto: "150", "mega x": "150-mega-x", "mega y": "150-mega-y" } },
-        { id: 212, name: "scizor", hasShiny: true, variants: { johto: "212", mega: "212-mega" } },
-        { id: 248, name: "tyranitar", hasShiny: true, variants: { johto: "248", mega: "248-mega" } },
-        { id: 282, name: "gardevoir", hasShiny: true, variants: { hoenn: "282", mega: "282-mega" } },
-        { id: 384, name: "rayquaza", hasShiny: true, variants: { hoenn: "384", mega: "384-mega" } },
-        { id: 445, name: "garchomp", hasShiny: true, variants: { sinnoh: "445", mega: "445-mega" } },
-        { id: 448, name: "lucario", hasShiny: true, variants: { sinnoh: "448", mega: "448-mega" } }
+    const pokemon = [
+        { id: 3, name: "venusaur", forms: { "Standard": "3", "Mega": "3-mega", "G-Max": "3-gmax" }},
+        { id: 6, name: "charizard", forms: { "Standard": "6", "Mega X": "6-mega-x", "Mega Y": "6-mega-y", "G-Max": "6-gmax" }},
+        { id: 9, name: "blastoise", forms: { "Standard": "9", "Mega": "9-mega", "G-Max": "9-gmax" }},
+        { id: 25, name: "pikachu", forms: { "Standard": "25", "G-Max": "25-gmax" }},
+        { id: 52, name: "meowth", forms: { "Kanto": "52", "Alola": "52-alola", "Galar": "52-galar", "G-Max": "52-gmax" }},
+        { id: 77, name: "ponyta", forms: { "Kanto": "77", "Galar": "10162" }},
+        { id: 78, name: "rapidash", forms: { "Kanto": "78", "Galar": "10163" }},
+        { id: 94, name: "gengar", forms: { "Standard": "94", "Mega": "94-mega", "G-Max": "94-gmax" }},
+        { id: 133, name: "eevee", forms: { "Standard": "133", "G-Max": "133-gmax" }},
+        { id: 150, name: "mewtwo", forms: { "Standard": "150", "Mega X": "150-mega-x", "Mega Y": "150-mega-y" }},
+        { id: 212, name: "scizor", forms: { "Standard": "212", "Mega": "212-mega" }},
+        { id: 384, name: "rayquaza", forms: { "Standard": "384", "Mega": "384-mega" }},
+        { id: 448, name: "lucario", forms: { "Standard": "448", "Mega": "448-mega" }}
     ];
 
-    let currentPokemon = pokemonDatabase.find(p => p.name === 'ponyta') || pokemonDatabase[0];
-    let currentFormKey = Object.keys(currentPokemon.variants)[0];
-    let isShiny = false;
+    const grid = document.getElementById('dex');
+    const search = document.getElementById('search');
+    const shiny = document.getElementById('shiny');
 
-    const listContainer = document.getElementById('pokemon-list');
-    const searchInput = document.getElementById('pokemon-search');
+    function render() {
+        grid.innerHTML = '';
+        const query = search.value.toLowerCase();
+        
+        pokemon.filter(p => p.name.includes(query)).forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            const firstId = Object.values(p.forms)[0];
+            const options = Object.entries(p.forms).map(([k, v]) => `<option value="${v}">${k}</option>`).join('');
 
-    function renderList(filterText = "") {
-        listContainer.innerHTML = "";
-        const filtered = pokemonDatabase.filter(p => 
-            p.name.includes(filterText.toLowerCase()) || p.id.toString().includes(filterText)
-        );
-
-        filtered.forEach(poke => {
-            const firstFormId = Object.values(poke.variants)[0];
-            const item = document.createElement('div');
-            item.className = 'grid-item';
-            item.innerHTML = `
-                <img src="https://githubusercontent.com{firstFormId}.png" alt="${poke.name}">
-                <p>${poke.name}</p>
+            card.innerHTML = `
+                <img id="img-${p.id}" src="https://githubusercontent.com{firstId}.png">
+                <div class="name">${p.name} (#${String(p.id).padStart(3, '0')})</div>
+                <select onchange="updateImg(${p.id}, this.value)">${options}</select>
             `;
-            item.addEventListener('click', () => selectPokemon(poke));
-            listContainer.appendChild(item);
+            grid.appendChild(card);
         });
     }
 
-    function selectPokemon(poke) {
-        currentPokemon = poke;
-        currentFormKey = Object.keys(poke.variants)[0];
-        isShiny = false;
-        updateDisplay();
-    }
+    window.updateImg = function(id, val) {
+        document.getElementById(`img-${id}`).src = `https://githubusercontent.com{shiny.checked ? 'shiny/' : ''}${val}.png`;
+    };
 
-    function updateDisplay() {
-        document.getElementById('main-name').innerText = currentPokemon.name;
-        document.getElementById('main-id').innerText = `#${currentPokemon.id.toString().padStart(4, '0')}`;
-        
-        const apiId = currentPokemon.variants[currentFormKey];
-        const spriteImg = document.getElementById('main-sprite');
+    search.addEventListener('input', render);
+    shiny.addEventListener('change', render);
+    render();
+</script>
 
-    if (isShiny) {spriteImg.src = https://githubusercontent.com{apiId}.png;
-                 } else {spriteImg.src = https://githubusercontent.com{apiId}.png;
-                        }
-        const buttonBox = document.getElementById('form-buttons');buttonBox.innerHTML = "";
-        Object.keys(currentPokemon.variants).forEach(formName => {const btn = document.createElement('button');btn.className = btn ${currentFormKey === formName && !isShiny ? 'active' : ''};
-    btn.innerText = formName;
-                                                                  btn.addEventListener('click', () => {currentFormKey = formName;isShiny = false;updateDisplay();});buttonBox.appendChild(btn);});if (currentPokemon.hasShiny) {const shinyBtn = document.createElement('button');shinyBtn.className = btn ${isShiny ? 'active' : ''};shinyBtn.innerText = "✨ Shiny";shinyBtn.style.gridColumn = "span 2";shinyBtn.addEventListener('click', () => {isShiny = !isShiny;updateDisplay();});buttonBox.appendChild(shinyBtn);}}searchInput.addEventListener('input', (e) => renderList(e.target.value));renderList();selectPokemon(currentPokemon);
+</body>
+</html>
