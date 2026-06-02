@@ -1,163 +1,304 @@
-:root {
-    --bg-main: #0a192f;
-    --bg-card: #172a45;
-    --bg-input: #020c1b;
-    --text-main: #64ffda;
-    --text-muted: #8892b0;
-    --text-white: #e6f1ff;
-    --accent-blue: #3066be;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Blue Pokédex</title>
+    <style>
+        :root {
+            --primary-blue: #0A2540;
+            --electric-blue: #00D4FF;
+            --soft-blue: #E6F0FA;
+            --card-bg: #FFFFFF;
+            --text-dark: #2C3E50;
+        }
 
-body {
-    background-color: var(--bg-main);
-    color: var(--text-white);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 20px;
-}
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue), #002244);
+            color: var(--soft-blue);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-.pokedex-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid var(--accent-blue);
-    padding-bottom: 20px;
-}
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--electric-blue);
+            padding-bottom: 20px;
+        }
 
-h1 {
-    color: var(--text-main);
-    font-size: 2.5rem;
-    margin: 0 0 15px 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+        header h1 {
+            color: var(--electric-blue);
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
 
-.search-controls {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
 
-input, select, button {
-    background-color: var(--bg-input);
-    border: 1px solid var(--text-main);
-    color: var(--text-white);
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    outline: none;
-}
+        #pokemon-search {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: 2px solid var(--electric-blue);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            outline: none;
+        }
 
-input:focus, select:focus {
-    box-shadow: 0 0 8px var(--text-main);
-}
+        #pokemon-search::placeholder {
+            color: #a0c0e0;
+        }
 
-button {
-    cursor: pointer;
-    background-color: var(--accent-blue);
-    border: none;
-    transition: background 0.3s;
-}
+        .pokedex-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+        }
 
-button:hover {
-    background-color: var(--text-main);
-    color: var(--bg-main);
-}
+        @media (max-width: 768px) {
+            .pokedex-layout {
+                grid-template-columns: 1fr;
+            }
+        }
 
-.toggle-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--bg-card);
-    padding: 5px 15px;
-    border-radius: 5px;
-    border: 1px solid var(--accent-blue);
-}
+        .display-card {
+            background: var(--card-bg);
+            color: var(--text-dark);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+            position: sticky;
+            top: 20px;
+            border: 3px solid var(--electric-blue);
+        }
 
-.pokemon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
+        .sprite-container {
+            background: radial-gradient(circle, #eef7ff 0%, #bce3ff 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.poke-card {
-    background-color: var(--bg-card);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid transparent;
-}
+        .sprite-container img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+        }
 
-.poke-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--text-main);
-    box-shadow: 0 8px 25px rgba(100, 255, 218, 0.15);
-}
+        .poke-id {
+            font-weight: bold;
+            color: #7f8c8d;
+        }
 
-.img-container {
-    background-color: var(--bg-main);
-    border-radius: 10px;
-    padding: 10px;
-    position: relative;
-    min-height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .poke-name {
+            font-size: 2rem;
+            margin: 5px 0;
+            text-transform: capitalize;
+            color: var(--primary-blue);
+        }
 
-.poke-img {
-    max-width: 100%;
-    max-height: 160px;
-    object-fit: contain;
-}
+        .form-selectors {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
 
-.poke-id {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-top: 10px;
-}
+        .btn {
+            background: var(--soft-blue);
+            border: 1px solid #bce3ff;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-blue);
+            transition: all 0.2s;
+            text-transform: capitalize;
+        }
 
-.poke-name {
-    color: var(--text-white);
-    font-size: 1.4rem;
-    margin: 5px 0 10px 0;
-    text-transform: capitalize;
-}
+        .btn:hover:not(:disabled) {
+            background: var(--electric-blue);
+            color: var(--primary-blue);
+        }
 
-.types-container {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 15px;
-}
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
 
-.type-badge {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: var(--accent-blue);
-}
+        .btn.active {
+            background: var(--primary-blue);
+            color: #fff;
+            border-color: var(--primary-blue);
+        }
 
-.form-selector {
-    width: 100%;
-    margin-top: 10px;
-    background-color: var(--bg-main);
-}
+        .list-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            max-height: 75vh;
+            overflow-y: auto;
+            border: 1px solid rgba(0, 214, 255, 0.2);
+        }
 
-.loading-msg {
-    text-align: center;
-    grid-column: 1 / -1;
-    color: var(--text-main);
-    font-size: 1.2rem;
-}
+        .poke-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
+        }
+
+        .grid-item {
+            background: rgba(10, 37, 64, 0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--electric-blue);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .grid-item img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .grid-item p {
+            margin: 5px 0 0 0;
+            font-size: 0.85rem;
+            text-transform: capitalize;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🔵 ADVANCED DEX 🔵</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="pokemon-search" placeholder="Search Pokémon by name or ID...">
+    </div>
+
+    <div class="pokedex-layout">
+        <!-- Main Display Panel -->
+        <div class="display-card">
+            <div class="sprite-container">
+                <img id="main-sprite" src="https://githubusercontent.com" alt="Pokemon Sprite">
+            </div>
+            <span class="poke-id" id="main-id">#0077</span>
+            <h2 class="poke-name" id="main-name">Ponyta</h2>
+            
+            <h3>Forms & Variants</h3>
+            <div class="form-selectors" id="form-buttons">
+                <!-- Buttons will dynamically generate here -->
+            </div>
+        </div>
+
+        <!-- Sidebar Selection List -->
+        <div class="list-panel">
+            <div class="poke-grid" id="pokemon-list">
+                <!-- Grid items generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Database mapping out different Pokemon sprite variants from PokeAPI
+    const pokemonDatabase = [
+        { id: 1, name: "bulbasaur", hasShiny: true, variants: { kanto: "1", gmax: "1-gmax" } },
+        { id: 3, name: "venusaur", hasShiny: true, variants: { kanto: "3", mega: "3-mega", gmax: "3-gmax" } },
+        { id: 6, name: "charizard", hasShiny: true, variants: { kanto: "6", "mega x": "6-mega-x", "mega y": "6-mega-y", gmax: "6-gmax" } },
+        { id: 9, name: "blastoise", hasShiny: true, variants: { kanto: "9", mega: "9-mega", gmax: "9-gmax" } },
+        { id: 25, name: "pikachu", hasShiny: true, variants: { kanto: "25", gmax: "25-gmax" } },
+        { id: 52, name: "meowth", hasShiny: true, variants: { kanto: "52", alola: "52-alola", galar: "52-galar", gmax: "52-gmax" } },
+        { id: 77, name: "ponyta", hasShiny: true, variants: { kanto: "77", galar: "10162" } },
+        { id: 78, name: "rapidash", hasShiny: true, variants: { kanto: "78", galar: "10163" } },
+        { id: 94, name: "gengar", hasShiny: true, variants: { kanto: "94", mega: "94-mega", gmax: "94-gmax" } },
+        { id: 130, name: "gyarados", hasShiny: true, variants: { kanto: "130", mega: "130-mega" } },
+        { id: 133, name: "eevee", hasShiny: true, variants: { kanto: "133", gmax: "133-gmax" } },
+        { id: 150, name: "mewtwo", hasShiny: true, variants: { kanto: "150", "mega x": "150-mega-x", "mega y": "150-mega-y" } },
+        { id: 212, name: "scizor", hasShiny: true, variants: { johto: "212", mega: "212-mega" } },
+        { id: 248, name: "tyranitar", hasShiny: true, variants: { johto: "248", mega: "248-mega" } },
+        { id: 282, name: "gardevoir", hasShiny: true, variants: { hoenn: "282", mega: "282-mega" } },
+        { id: 384, name: "rayquaza", hasShiny: true, variants: { hoenn: "384", mega: "384-mega" } },
+        { id: 445, name: "garchomp", hasShiny: true, variants: { sinnoh: "445", mega: "445-mega" } },
+        { id: 448, name: "lucario", hasShiny: true, variants: { sinnoh: "448", mega: "448-mega" } }
+    ];
+
+    let currentPokemon = pokemonDatabase.find(p => p.name === 'ponyta') || pokemonDatabase[0];
+    let currentFormKey = Object.keys(currentPokemon.variants)[0];
+    let isShiny = false;
+
+    const listContainer = document.getElementById('pokemon-list');
+    const searchInput = document.getElementById('pokemon-search');
+
+    function renderList(filterText = "") {
+        listContainer.innerHTML = "";
+        const filtered = pokemonDatabase.filter(p => 
+            p.name.includes(filterText.toLowerCase()) || p.id.toString().includes(filterText)
+        );
+
+        filtered.forEach(poke => {
+            const firstFormId = Object.values(poke.variants)[0];
+            const item = document.createElement('div');
+            item.className = 'grid-item';
+            item.innerHTML = `
+                <img src="https://githubusercontent.com{firstFormId}.png" alt="${poke.name}">
+                <p>${poke.name}</p>
+            `;
+            item.addEventListener('click', () => selectPokemon(poke));
+            listContainer.appendChild(item);
+        });
+    }
+
+    function selectPokemon(poke) {
+        currentPokemon = poke;
+        currentFormKey = Object.keys(poke.variants)[0];
+        isShiny = false;
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        document.getElementById('main-name').innerText = currentPokemon.name;
+        document.getElementById('main-id').innerText = `#${currentPokemon.id.toString().padStart(4, '0')}`;
+        
+        const apiId = currentPokemon.variants[currentFormKey];
+        const spriteImg = document.getElementById('main-sprite');
+
+    if (isShiny) {spriteImg.src = https://githubusercontent.com{apiId}.png;
+                 } else {spriteImg.src = https://githubusercontent.com{apiId}.png;
+                        }
+        const buttonBox = document.getElementById('form-buttons');buttonBox.innerHTML = "";
+        Object.keys(currentPokemon.variants).forEach(formName => {const btn = document.createElement('button');btn.className = btn ${currentFormKey === formName && !isShiny ? 'active' : ''};
+    btn.innerText = formName;
+                                                                  btn.addEventListener('click', () => {currentFormKey = formName;isShiny = false;updateDisplay();});buttonBox.appendChild(btn);});if (currentPokemon.hasShiny) {const shinyBtn = document.createElement('button');shinyBtn.className = btn ${isShiny ? 'active' : ''};shinyBtn.innerText = "✨ Shiny";shinyBtn.style.gridColumn = "span 2";shinyBtn.addEventListener('click', () => {isShiny = !isShiny;updateDisplay();});buttonBox.appendChild(shinyBtn);}}searchInput.addEventListener('input', (e) => renderList(e.target.value));renderList();selectPokemon(currentPokemon);
